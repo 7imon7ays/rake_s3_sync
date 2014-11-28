@@ -9,11 +9,12 @@ This Rakefile has the following dependencies:
 * 'aws-sdk'
 * 'mime/types'
 * 'colorize'
+* 'highline'
 
 Before using it, run
 
 ```
-  gem install aws-sdk mime-types colorize
+  gem install aws-sdk mime-types colorize highline
 ```
 
 This Rakefile will look in your home directory for a file called ".aws.json"
