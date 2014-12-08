@@ -22,8 +22,8 @@ that contains the JSON string of your AWS credentials.
 
 ```json
 {
-  "accessKeyId": "YOUR_ACCESS_KEY_ID",
-  "secretAccessKey": "YOUR_SECRET_ACCESS_KEY"
+  "access_key_id": "YOUR_ACCESS_KEY_ID",
+  "secret_access_key": "YOUR_SECRET_ACCESS_KEY"
 }
 ```
 
@@ -35,6 +35,11 @@ the navigation menu and open "Security Credentials". See [here][credentials docs
 
 ## Tasks
 
+**s3:auth**
+
+This task will prompt you for your AWS credentials and store them in your home
+directory in a file called ".aws.json".
+
 **s3:upload**
 
 This uploads every file in the current directory and its subdirectories to an
@@ -42,14 +47,14 @@ AWS bucket. The Rakefile itself and any file beginning with a "." are ignored.
 It syncs to arbitary levels of nesting so be careful with symlinks that could
 cause an infinite loop.
 
-The bucket will take the name of the current directory by default. Pass the
-following option to use a different name:
+The bucket will take the name of the current directory by default. Run the
+command with the following option to use a different name:
 
 ```
-  bucket=BUCKET_NAME
+  rake s3:upload bucket=BUCKET_NAME
 ```
 
 *Caution: If a bucket with that name already exists and contains files with the
-same names as the files in your directory, those files will get overriden without
+same names as the files in your directory, those files will be overriden without
 warning.*
 
