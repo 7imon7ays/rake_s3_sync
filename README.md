@@ -1,23 +1,10 @@
 # S3 Sync
 
-A rakefile to mirror your current directory in an AWS bucket.
+Command line tools to mirror your current directory in an AWS bucket.
 
 ## Set up
 
-This Rakefile has the following dependencies:
-
-* 'aws-sdk'
-* 'mime/types'
-* 'colorize'
-* 'highline'
-
-Before using it, run
-
-```
-  gem install aws-sdk mime-types colorize highline
-```
-
-This Rakefile will look in your home directory for a file called ".aws.json"
+This CLI will look in your home directory for a file called ".aws.json"
 that contains the JSON string of your AWS credentials.
 
 ```json
@@ -37,22 +24,18 @@ the navigation menu and open "Security Credentials". See [here][credentials docs
 
 **s3:auth**
 
-This task will prompt you for your AWS credentials and store them in your home
+This command will prompt you for your AWS credentials and store them in your home
 directory in a file called ".aws.json".
 
 **s3:upload**
 
 This uploads every file in the current directory and its subdirectories to an
-AWS bucket. The Rakefile itself and any file beginning with a "." are ignored.
-It syncs to arbitary levels of nesting so be careful with symlinks that could
-cause an infinite loop.
+AWS bucket. Any file beginning with "." is ignored. It syncs to arbitary levels
+of nesting so be careful with symlinks that could cause an infinite loop.
 
-The bucket will take the name of the current directory by default. Run the
-command with the following option to use a different name:
-
-```
-  rake s3:upload bucket=BUCKET_NAME
-```
+The bucket will take the name of the current directory, replacing underscores
+with dashes. Note that the bucket's name must conform with DNS requirements if
+you plan on publishing it as a website.
 
 *Caution: If a bucket with that name already exists and contains files with the
 same names as the files in your directory, those files will be overriden without
