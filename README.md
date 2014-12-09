@@ -2,6 +2,10 @@
 
 A rakefile to mirror your current directory in an AWS bucket.
 
+*Now released as a gem called [dears3][dears3].*
+
+[dears3]: https://github.com/7imon7ays/DearS3
+
 ## Set up
 
 This Rakefile has the following dependencies:
